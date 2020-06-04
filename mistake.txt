@@ -1,0 +1,42 @@
+
+错误1：
+    ! [rejected]        master -> master (fetch first)
+    error: failed to push some refs to 'https://gitee.com/cn_xxxxx/node.git'
+    hint: Updates were rejected because the remote contains work that you do
+    hint: not have locally. This is usually caused by another repository pushing
+    hint: to the same ref. You may want to first integrate the remote changes
+    hint: (e.g., 'git pull ...') before pushing again.
+    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+    
+    出现上面并push卡住时：大概原因就是 意思是本地和远程的文件应该合并后才能上传本地的新文件
+    1、先拉下来，会自动合并的（不用操心）
+    git pull origin master
+    2、再上传
+    git push -u origin master
+
+    成功解决问题
+    转载https://blog.csdn.net/winnershili/article/details/78888548?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522159128767819725211957270%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=159128767819725211957270&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v3~pc_rank_v4-1-78888548.first_rank_ecpm_v3_pc_rank_v4&utm_term=error%3A+failed+to+push+some+ref
+
+错误2：
+    git add 后出现LF等字眼：
+        是正常情况，可设置，这主要有行结束符号不同引起，区别window平台和linux而已，可不改。
+        解决方案是：
+找到当前本地的 git 工程工作空间（对于TortoiseGit 来说就是down下来的git工程根目录），打开隐藏的 .git 文件夹 找到 config 文件：
+[core]
+    repositoryformatversion = 0
+    filemode = false
+    bare = false
+    logallrefupdates = true
+    symlinks = false
+    ………………
+在[core]后面添加两个配置 autocrlf = false  safecrlf = false
+[core]
+    autocrlf = false
+    safecrlf = false
+    repositoryformatversion = 0
+    filemode = false
+    bare = false
+    logallrefupdates = true
+    symlinks = false
+    ……………………
+保存之后重新add就可以了，把true改成flase，其实不影响
