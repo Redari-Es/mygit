@@ -20,7 +20,8 @@
 
 **SSH是git的官方ssh配置教程，我只是复制一遍，鲜有不全可自行查略**  
 
-**to_solve_root是解决push时输入密码的问题
+**to_solve_root是解决push时输入密码的问题,要注意的是如果有多个.git则需要重新再当个仓库的config添加**  
+
 ------
 
 
