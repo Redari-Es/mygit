@@ -1,0 +1,96 @@
+其中的操作与linux下的vim操作相同
+
+
+Git 的工作流程一般是酱紫：
+	1.在工作目录中添加、修改文件
+	2.将需要进行版本管理的文件放入暂存区域
+	3.将暂存区域的文件提交到Git仓库
+
+Git管理的文件有三种状态：
+	-已修改（modified）
+	-已暂存（staged）
+	-已提交（committed）
+
+例子：
+git add README.md
+git commit -m "add a readme file"	#-m 后面是指说明
+
+
+
+
+常用命令：
+	-git add 文件名
+	-git commit -m "你干啥了"
+	-git status #查看状态
+	-git reset HEAD file#（将其指向上一个快照）
+				指定文件恢复暂存区的特定文件
+				不指定恢复最后一个文件
+				HEAD~（将其指向上一个快照#回到暂存区（（~~可多个回到上上的快照）
+						~10回到10个快照						）
+				reset --soft HEAD~	
+					（移动HEAD的指向，将其指向上一个快照)		#撤销上一次提交命令
+				reset --hard HEAD~
+						(移动HEAD的指向，将其指向上一个快照)	
+						将HEAD移动后指向的快照回滚到暂存区域
+						将暂存区域的文件还原到工作目录
+						
+				回滚个别文件
+					git reset 版本快照 文件名/路径
+				往未来滚
+					git reset 版本快照的ID号
+					
+	-git 	add  #（覆盖旧文件）
+	-git checkout -- file #（旧文件覆盖新文件）
+			
+	
+记录：
+	-git log #历史记录
+			--decorate 显示指向指针、标签的索引用。
+				--oneline（添加这个参数指只显示快照的ID和说明精简）
+					--graph（图形画显示）
+							--all（全部）
+							
+	
+	-git diff #比较暂存区域和工作区域
+					--cached（默认最新和暂存区） 
+					快照ID #比较暂存区域和Git仓库的快照
+					
+修改最后一次提交：
+	git commit --amend
+									 - m 不进入直接编辑
+									 
+删除文件：
+	git rm
+			-该命令删除的只是工作目录和暂存区域的文件，也就是取消跟踪，在下次提交时不纳入版本管理。
+			-
+				当工作目录和暂存区域的同一个文件存在不同内容时，执行git rm -f 文件名 命令就可以把两个都删除
+				- 
+					如果只删除暂存区域的文件（保留工作目录的）
+					那么可以执行git rm -- cached 文件名  命令实现目的。
+	git reflog
+			-恢复日记吧（不确定）
+	
+重命名文件：
+	git mv 旧文件名 新文件名
+	
+	
+创建分支：
+	master：（主分支的意思）
+	git branch 分支名
+	切换分支：
+		git checkout 分支名
+		
+合并分支：
+	git merge 分支名
+删除分支：
+	git merge -d 分支名
+
+匿名分支：
+	可以用于实验，不会提交，不影响master
+	git checkout HEAD~
+	
+checkout有两种功能：
+保存文件到工作目录和暂存区域
+切换分支
+
+现增加了restore命令
