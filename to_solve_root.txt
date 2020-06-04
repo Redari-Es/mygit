@@ -1,0 +1,6 @@
+为了不每次都输入密码
+在.git/config 中
+添加
+[credential] 
+        helper = store --file .git-credentials 
+保存退出后push一次输入密码之后就不用了。
