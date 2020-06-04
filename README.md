@@ -1,8 +1,8 @@
 
 
-#<u> 再你克隆前须知以下内容: </u>  
+# <u> 再你克隆前须知以下内容: </u>  
 
-##这里放了三个文档,是我在学习过程中记录的  
+### 这里放了三个文档,是我在学习过程中记录的  
 
 **这是window版本的教程**  
 
@@ -10,7 +10,7 @@
 [国内下载Git的地址][4]
 ----
 ----
-##内容简介:  
+## 内容简介:  
 
 **除了gitfishC,其他需要更改后缀为docx才能查看**  
 
@@ -20,16 +20,18 @@
 
 **SSH是git的官方ssh配置教程，我只是复制一遍，鲜有不全可自行查略**  
 
+------
 
 
 
 
-----------
---------
-##希望这些资料能够帮助你学习git
-----
-==#这里推荐学习Git的教程
+
+## 希望这些资料能够帮助你学习git
+
+### 这里推荐学习Git的教程
+
 **比较全面基础的视频,这个视频不建议看，有点长且后几集老师感冒了声音有点小**
+
 [学会Git玩转Github][1]
 -----
 <u>这个是小甲鱼老师的，鄙人非常喜欢他，在他那学了很多内容。相对上面的更值得学习</u>
@@ -40,24 +42,25 @@
 <u>2020年出了个简易文档非常值得看</u>
 [菜鸟简易文档][3]
 
--------  
+-------
+
   
-  
 
 
 
-#The End
------
+The End
+=====
 -----
 ***本文档由~~*Redari_Es*~~制作与部分转载，个人推荐学习指南！**  
-##**作者声明：初次制作，欢迎指正！**
+
+## **作者声明：初次制作，欢迎指正！**
 
 
 
 ------------
 ~~此次超链接~~
-[1]:https://www.bilibili.com/video/BV1Xx411m7kn?p=6  
-[2]:https://www.bilibili.com/video/BV1bs411N7ny  
-[3]:https://www.runoob.com/manual/git-guide/  
+[1]:https://www.bilibili.com/video/BV1Xx411m7kn?p=6
+[2]:https://www.bilibili.com/video/BV1bs411N7ny
+[3]:https://www.runoob.com/manual/git-guide/
 [4]:https://mirrors.tuna.tsinghua.edu.cn/github-release/git-for-windows/git/Git%20for%20Windows%202.27.0/
 
