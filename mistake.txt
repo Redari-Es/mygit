@@ -1,5 +1,10 @@
 
-错误1：
+以下是本人使用git时出现的各类错误O
+
+
+
+--------------------------------------------
+错误1：远程同步的push和pull
     ! [rejected]        master -> master (fetch first)
     error: failed to push some refs to 'https://gitee.com/cn_xxxxx/node.git'
     hint: Updates were rejected because the remote contains work that you do
@@ -15,9 +20,76 @@
     git push -u origin master
 
     成功解决问题
-    转载https://blog.csdn.net/winnershili/article/details/78888548?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522159128767819725211957270%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=159128767819725211957270&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v3~pc_rank_v4-1-78888548.first_rank_ecpm_v3_pc_rank_v4&utm_term=error%3A+failed+to+push+some+ref
+ 
 
-错误2：
+-------------------------------------------
+错误1补充
+                Pull is not possible because you have unmerged files错误解决！
+                
+                应该是因为local文件冲突了
+            解决方法：
+            引用――
+            “
+            1.pull会使用git merge导致冲突，需要将冲突的文件resolve掉 git add -u, git commit之后才能成功pull.
+            2.如果想放弃本地的文件修改，可以使用git reset --hard FETCH_HEAD，FETCH_HEAD表示上一次成功git pull之后形成的commit点。然后git pull.
+            注意：
+            git merge会形成MERGE-HEAD(FETCH-HEAD) 。git push会形成HEAD这样的引用。HEAD代表本地最近成功push后形成的引用。
+            ”
+            就我的经验，有时候会莫名其妙地出现这种状况，而且Untracked files 还特别多（实际上自己可能只改了一两个文件），所以只好先保存好自己确定做出的local的修改，
+            然后用git reset --hard FETCH_HEAD回到上次成功pull之后的点，然后再pull就没有问题了
+
+
+            上面成功后会打开一个文件，直接Esc：q退出即可。
+
+---------------------------------------------------------
+错误1补充
+    ! [rejected] master -> master (non-fast-forward)
+
+            今天往github上传东西的时候出现了这个错误，总结一下。
+
+            之前使用过github上传东西但是，今天可能是我又创建了新的SSH链接所以需要密码和账号，但是密码账号验证之后还是会出现这种问题。
+
+            后来看了一下别人的博客 ，貌似是因为两个电脑都要上传资料所以出现了问题，github拒绝访问
+
+            解决方法
+
+             正确的做法是，在push之前git fetch origin，将github上的新代码拉下来，然后在本地merge，如果没有冲突就可以push了，如果有冲突的话要在本地解决冲突后，再push。具体做法就是。
+             
+
+            git fetch origin git merge origin/master git push origin master
+
+            还有就是回顾一下使用github上传下载的方法
+
+            git init  //初始化仓库 git add . //添加文件到本地的库 git commit -m"explain" //将缓冲区的指令提交 
+
+
+-----------------------------------------------------
+错误1补充
+    解决Git中fatal: refusing to merge unrelated histories
+            一、fatal: refusing to merge unrelated histories
+            今天在使用Git创建项目的时候，在两个分支合并的时候，出现了下面的这个错误。
+            ~/SpringSpace/newframe on  master ⌚ 11:35:56
+            $ git merge origin/druid
+            fatal: refusing to merge unrelated histories
+            这里的问题的关键在于：fatal: refusing to merge unrelated histories 
+            你可能会在git pull或者git push中都有可能会遇到，这是因为两个分支没有取得关系。那么怎么解决呢？
+            二、解决方案
+            在你操作命令后面加--allow-unrelated-histories 
+            例如： 
+            git merge master --allow-unrelated-histories
+            ~/SpringSpace/newframe on  druid ⌚ 11:36:49
+            $ git merge master --allow-unrelated-histories
+            Auto-merging .gitignore
+            CONFLICT (add/add): Merge conflict in .gitignore
+            Automatic merge failed; fix conflicts and then commit the result.
+            如果你是git pull或者git push报fatal: refusing to merge unrelated histories 
+            同理： 
+            git pull origin master --allow-unrelated-histories 
+
+
+
+---------------------------------------------------------
+错误2：git中的add和commit
     git add 后出现LF等字眼：
     warning: LF will be replaced by CRLF in README.md.
     The file will have its original line endings in your working directory
@@ -43,3 +115,9 @@
     symlinks = false
     ……………………
 保存之后重新add就可以了，把true改成flase，其实不影响
+---------------------------------------------------------------
+
+
+侵权声明：
+以上有转载，若侵权请联系本人。
+本人侵权致歉！！！
