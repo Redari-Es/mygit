@@ -19,7 +19,10 @@
 
 错误2：
     git add 后出现LF等字眼：
-        是正常情况，可设置，这主要有行结束符号不同引起，区别window平台和linux而已，可不改。
+    warning: LF will be replaced by CRLF in README.md.
+    The file will have its original line endings in your working directory
+
+        是正常情况，可设置，这主要由行结束符号不同引起，区别window平台和linux而已，可不改。
         解决方案是：
 找到当前本地的 git 工程工作空间（对于TortoiseGit 来说就是down下来的git工程根目录），打开隐藏的 .git 文件夹 找到 config 文件：
 [core]
