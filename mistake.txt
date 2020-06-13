@@ -1,4 +1,4 @@
-
+ 
 以下是本人使用git时出现的各类错误O
 
 
@@ -85,7 +85,12 @@
             如果你是git pull或者git push报fatal: refusing to merge unrelated histories 
             同理： 
             git pull origin master --allow-unrelated-histories 
+------------------------------------------------------------------
+Git 提示fatal: remote origin already exists 错误解决办法
 
+1、先输入$ git remote rm origin
+
+    2、再输入$ git remote add origin http/ssh....... 就不会报错了！
 
 
 ---------------------------------------------------------
