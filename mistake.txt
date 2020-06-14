@@ -91,6 +91,37 @@ Git 提示fatal: remote origin already exists 错误解决办法
 1、先输入$ git remote rm origin
 
     2、再输入$ git remote add origin http/ssh....... 就不会报错了！
+    
+    
+-----------------------------------------------------------------
+git有时候会报这样的问题
+
+ERROR: Repository not found.
+
+fatal: Could not read from remote repository.
+
+ 
+
+Please make sure you have the correct access rights
+
+and the repository exists.
+ 
+解决方案是
+git remote set-url命令修改remote URL
+git remote set-url传递两个参数
+remote name。例如，origin或者upstream
+new remote url。例如，git@github.com:USERNAME/OTHERREPOSITORY.git
+git remote set-url origin git@github.com:xxxxxx/xxxxxx.git
+ 
+查看是否成功
+
+$ git remote -v
+
+ 
+
+origin    https:YourUserName/YatouTest00123.git (fetch)
+
+origin    https:YourUserName/YatouTest00123.git (push
 
 
 ---------------------------------------------------------
